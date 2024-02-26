@@ -1,21 +1,27 @@
 import { ArrowRightIcon, TrashIcon } from '@heroicons/react/24/outline';
+import { useDispatch } from 'react-redux';
+import { updateStatus } from '../../redux/features/tasks/tasksSlice';
 
 const TaskCard = ({item}) => {
   console.log(item.taskName)
  
-
+const dispatch = useDispatch()
   return (
-    <div className="bg-secondary/10 rounded-md p-5">
+    <div className={` rounded-md p-5 ${
+      item?.status === 'pending' ? 'bg-secondary/10' : ''
+    } ${item?.status === 'running' ? 'bg-green-500/20' : ''} ${
+      item?.status === 'complete' ? 'bg-rose-500/20' : ''
+    }`}>
       <h1
         className={`text-lg font-semibold mb-3  ${
           item?.priority === 'high' ? 'text-red-500' : ''
         } ${item?.priority === 'medium' ? 'text-yellow-500' : ''} ${
-          item?.priority === 'low' ? 'text-green-500' : ''
+          item?.priority === 'easy' ? 'text-green-500' : ''
         }`}
       >
         {item?.taskName}
       </h1>
-      <p className="mb-3">{item?.taskDescription}</p>
+      <p className="mb-3 w-fit">{item?.taskDescription}</p>
       <p className="text-sm">Assigned to - {item?.assignedTo}</p>
       <div className="flex justify-between mt-3">
         <p>{item?.taskdeadline}</p>
@@ -25,7 +31,7 @@ const TaskCard = ({item}) => {
           </button>
           <button
             onClick={() =>
-              dispatch(updateStatus({ id: task.id, status: updatedStatus }))
+              dispatch(updateStatus({id: item.id , status: item.status}))
             }
             title="In progress"
           >

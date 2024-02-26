@@ -43,13 +43,13 @@ const Tasks = () => {
         <div className="grid grid-cols-3 gap-5 mt-10 taskbox">
           <div className="relative h-[800px] overflow-auto">
             <div className="flex sticky top-0 justify-between bg-[#D3DDF9] p-5 rounded-md mb-3">
-              <h1>Up Next</h1>
+              <h1>Pending</h1>
               <p className="bg-primary text-white w-6 h-6 grid place-content-center rounded-md">
-                0
+              {tasks?.filter(item=>item.status==="pending").length}
               </p>
             </div>
             <div className="space-y-3">
-              {tasks.map((item) => (
+              {tasks.filter(item=>item.status==="pending").map((item) => (
                 <TaskCard key={item?.id}  item={item} />
               ))}
             </div>
@@ -58,24 +58,24 @@ const Tasks = () => {
             <div className="flex sticky top-0 justify-between bg-[#D3DDF9] p-5 rounded-md mb-3">
               <h1>In Progress</h1>
               <p className="bg-primary text-white w-6 h-6 grid place-content-center rounded-md">
-                {tasks?.length}
+              {tasks?.filter(item=>item.status==="running").length}
               </p>
             </div>
             <div className="space-y-3">
-            {tasks.map((item) => (
+            {tasks.filter(item=>item.status==="running").map((item) => (
                 <TaskCard key={item?.id} item={item} />
               ))}
             </div>
           </div>
           <div className="relative h-[800px] overflow-auto">
             <div className="flex sticky top-0 justify-between bg-[#D3DDF9] p-5 rounded-md mb-3">
-              <h1>Up Next</h1>
+              <h1>Completed</h1>
               <p className="bg-primary text-white w-6 h-6 grid place-content-center rounded-md">
-                0
+              {tasks?.filter(item=>item.status==="complete").length}
               </p>
             </div>
             <div className="space-y-3">
-            {tasks.map((item) => (
+            {tasks.filter(item=>item.status==="complete").map((item) => (
                 <TaskCard key={item?.id} item={item} />
               ))}
             </div>
