@@ -1,15 +1,20 @@
 import { useForm } from "react-hook-form";
 import Modal from "../ui/Modal";
+import { useDispatch } from "react-redux";
+import { addTask } from "../../redux/features/tasks/tasksSlice";
 
 const AddTaskModal = ({ isOpen, setIsOpen }) => {
-  const { register, handleSubmit ,reset} = useForm();
+  const { register, handleSubmit, reset } = useForm();
+  const dispatch = useDispatch()
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
   const onCancel = (data) => {
-   reset()
-   setIsOpen(false)
+    reset();
+    setIsOpen(false);
+  };
+  const onSubmit = (data) => {
+    dispatch(addTask(data))
+    // console.log(data);
+    onCancel()
   };
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen} title={"Add New Task"}>
@@ -61,9 +66,7 @@ const AddTaskModal = ({ isOpen, setIsOpen }) => {
             className="rounded-lg border-primary"
             required
           >
-            <option value="ABD NIMT" >
-              ABD NIMT
-            </option>
+            <option value="ABD NIMT">ABD NIMT</option>
             <option value="Abdullah Ibne Ali">Abdullah Ibne Ali</option>
             <option value="DEV JOE">DEV JOE</option>
           </select>
@@ -85,13 +88,19 @@ const AddTaskModal = ({ isOpen, setIsOpen }) => {
           </select>
         </div>
         <div className="flex gap-4">
-
-        <button type="submit" className="btn bg-primary text-white w-fit hover:scale-95">
-          ADD
-        </button>
-        <button type="button" className="btn btn-danger text-white w-fit hover:scale-95" onClick={()=>onCancel()}>
-          Cancel
-        </button>
+          <button
+            type="submit"
+            className="btn bg-primary text-white w-fit hover:scale-95"
+          >
+            ADD
+          </button>
+          <button
+            type="button"
+            className="btn btn-danger text-white w-fit hover:scale-95"
+            onClick={() => onCancel()}
+          >
+            Cancel
+          </button>
         </div>
       </form>
     </Modal>

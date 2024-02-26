@@ -13,3 +13,16 @@
 .btn-danger {
   @apply bg-red-500 text-white;
 }
+body::-webkit-scrollbar {
+  width: .5em;
+}
+ 
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(39, 54, 255);
+  border-radius: 5px;
+  outline: 1px solid rgb(199, 227, 255);
+}
