@@ -37,7 +37,12 @@ const Tasks = () => {
                 alt=""
                 className="object-cover h-full w-full "
               />
+            
             </div>
+            <div className="text-sm ">
+                <p>Mr. User</p>
+                <p className="text-xs font-bold text-primary">me@user.com</p>
+              </div>
           </div>
         </div>
         <div className="grid grid-cols-3 gap-5 mt-10 taskbox">

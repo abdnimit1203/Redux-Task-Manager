@@ -2,22 +2,14 @@ import {
   CheckIcon,
   DocumentMagnifyingGlassIcon,
 } from '@heroicons/react/24/outline';
+import { useSelector } from 'react-redux';
 
 const MyTasks = () => {
-  const item = {
-    id: 1,
-    status: 'pending',
-    title: 'Remove Button',
-    description:
-      'We need a remove button in our task card. Meke the button red and use Heroicon for tashbin icon.',
-    date: '2023-08-28',
-    assignedTo: 'Mir Hussain',
-    priority: 'high',
-  };
-
+ const {name} = useSelector((state)=>state.userSlice)
+console.log(name)
   return (
     <div>
-      <h1 className="text-xl my-3">My Tasks</h1>
+      {/* <h1 className="text-xl my-3">My Tasks</h1>
       <div className=" h-[750px] overflow-auto space-y-3">
         <div
           key={item.id}
@@ -33,7 +25,7 @@ const MyTasks = () => {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

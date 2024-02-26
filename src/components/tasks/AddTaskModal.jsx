@@ -5,16 +5,16 @@ import { addTask } from "../../redux/features/tasks/tasksSlice";
 
 const AddTaskModal = ({ isOpen, setIsOpen }) => {
   const { register, handleSubmit, reset } = useForm();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const onCancel = (data) => {
     reset();
     setIsOpen(false);
   };
   const onSubmit = (data) => {
-    dispatch(addTask(data))
+    dispatch(addTask(data));
     // console.log(data);
-    onCancel()
+    onCancel();
   };
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen} title={"Add New Task"}>
@@ -66,9 +66,10 @@ const AddTaskModal = ({ isOpen, setIsOpen }) => {
             className="rounded-lg border-primary"
             required
           >
-            <option value="ABD NIMT">ABD NIMT</option>
+            <option value="ABD NIMT" >ABD NIMT</option>
             <option value="Abdullah Ibne Ali">Abdullah Ibne Ali</option>
             <option value="DEV JOE">DEV JOE</option>
+            <option value="Mr. User" className="text-primary font-bold">Mr. User</option>
           </select>
         </div>
         <div className="flex flex-col gap-2">
