@@ -14,7 +14,7 @@ const routes = createBrowserRouter([
         element: <Tasks />,
       },
       {
-        path: '/chat',
+        path: '/fungame',
         element: <Chat />,
       },
       {
