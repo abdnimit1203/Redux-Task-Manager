@@ -1,4 +1,4 @@
-import SinglePokemon from "../components/pokemons/singlePokemon";
+import OnePokemon from "../components/pokemon/OnePokemon";
 import { useGetPokemonByIdQuery, useGetPokemonByNameQuery } from "../redux/features/api/baseApi";
 
 const Chat = () => {
@@ -30,7 +30,7 @@ const Chat = () => {
             {
               totalPokemon.map((item,index)=>
               ( 
-                 <SinglePokemon pokeID={index+1}/>
+                 <OnePokemon pokeID={index+1}/>
 
                )
               )
