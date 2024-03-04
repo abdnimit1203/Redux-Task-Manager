@@ -1,10 +1,11 @@
+import SinglePokemon from "../components/pokemons/singlePokemon";
 import { useGetPokemonByIdQuery, useGetPokemonByNameQuery } from "../redux/features/api/baseApi";
 
 const Chat = () => {
   // const { data, isLoading ,isError,error} = useGetPokemonByNameQuery();
-  const { data, isLoading ,isError,error} = useGetPokemonByIdQuery(1);
+  const { data, isLoading ,isError,error} = useGetPokemonByIdQuery(25);
   console.log(data);
-
+  const totalPokemon = Array(30).fill("p");
   if(isLoading){
     return <p className="animate-spin w-fit aspect-square bg-red-500 rounded-full text-white">---O---</p>
   }
@@ -26,13 +27,17 @@ const Chat = () => {
                 {poke?.name}
               </p>
             ))} */}
-            <div className="text-center">
+            {
+              totalPokemon.map((item,index)=>
+              ( 
+                 <SinglePokemon pokeID={index+1}/>
 
-            <img src={`${data?.sprites?.front_default} `} alt="pokemon" className="w-fit mx-auto bg-white rounded-full" />
-            <p>{data?.species.name}</p>
-            </div>
-
+               )
+              )
+            }
+          
       </div>
+      
     </div>
   );
 };
